@@ -1,0 +1,17 @@
+{
+  "name": "@character-counter/css",
+  "version": "1.0.0",
+  "description": "",
+  "license": "ISC",
+  "author": "Seila Gamo",
+  "main": "index.js",
+  "scripts": {
+    "stylelint": "stylelint \"**/*.css\"",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "devDependencies": {
+    "stylelint": "^16.15.0",
+    "stylelint-config-rational-order": "^0.1.2",
+    "stylelint-config-standard": "^37.0.0"
+  }
+}

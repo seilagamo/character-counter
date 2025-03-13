@@ -1,0 +1,150 @@
+:root {
+  --clr-body-bg: hsl(0deg 0% 90%);
+  --clr-card-bg: hsl(0deg 0% 100%);
+  --clr-text: hsl(0deg 0% 15%);
+  --clr-heading: hsl(0deg 0% 25%);
+}
+
+:root:has(#dark-mode-toggle:checked) {
+  --clr-body-bg: hsl(209deg 50% 10%);
+  --clr-card-bg: hsl(209deg 50% 5%);
+  --clr-text: hsl(209deg 50% 90%);
+  --clr-heading: hsl(209deg 50% 80%);
+}
+
+
+/* makes sizing simpler */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+/* remove default spacing
+   force styling of type through styling, rather than elements */
+* {
+  margin: 0;
+  padding: 0;
+  font: inherit;
+}
+
+/* dark mode user-agent-styles */
+html {
+  color-scheme: dark light;
+}
+
+/* min body height */
+body {
+  min-height: 100vh;
+  color: var(--clr-text);
+  background: var(--clr-body-bg);
+}
+
+/* responsive images/videos */
+img,
+picture,
+svg,
+video {
+  display: block;
+  max-width: 100%;
+}
+
+/* Improved heading in supported browsers */
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  text-wrap: balance;
+}
+
+/* improve readability with max-width on paragraphs and lists
+   prevent orphans in supported browsers */
+p,
+li {
+  max-width: var(--p-max-width, 65ch);
+  text-wrap: pretty;
+}
+
+/* --------------------------
+   Utility classes
+-------------------------- */
+
+/* general */
+.flex {
+  display: flex;
+  gap: var(--gap, 1rem);
+}
+
+.grid {
+  display: grid;
+  gap: var(--gap, 1rem);
+}
+
+.flow > *:where(:not(:first-child)) {
+  margin-block-start: var(--flow-space, 1rem);
+}
+
+
+.container {
+  max-width: 80rem;
+  padding-inline: 2em;
+  margin-inline: auto;
+}
+
+
+.theme-picker-container,
+.theme-picker {
+  display: inline;
+}
+
+.visually-hidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  white-space: nowrap;
+  clip: rect(0 0 0 0);
+  clip-path: inset(50%);
+}
+
+/* Theme toggle switch */
+
+input[type="checkbox"][role="switch"] {
+  position: relative;
+  box-sizing: content-box;
+  width: 2em;
+  height: 1em;
+  margin: auto;
+  color: inherit;
+  font-size: inherit;
+  vertical-align: text-bottom;
+  border: 1px solid;
+  border-radius: 1em;
+  appearance: none;
+}
+
+input:where([type="checkbox"][role="switch"])::before {
+  position: absolute;
+  top: 50%;
+  left: 0;
+  box-sizing: border-box;
+  width: 0.7em;
+  height: 0.7em;
+  margin: 0 0.15em;
+  background: currentcolor;
+  border: 1px solid;
+  border-radius: 50%;
+  transform: translate(0, -50%);
+  transition: 0.3s;
+  content: "";
+}
+
+input:where([type="checkbox"][role="switch"]):checked::before {
+  left: 1em;
+}
+
+input:where([type="checkbox"][role="switch"]):active {
+  opacity: 0.6;
+}
