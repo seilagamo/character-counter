@@ -3,6 +3,9 @@
   --clr-card-bg: hsl(0deg 0% 100%);
   --clr-text: hsl(0deg 0% 15%);
   --clr-heading: hsl(0deg 0% 25%);
+
+  /* Typography */
+  --ff-primary: "DM Sans", sans-serif;
 }
 
 :root:has(#dark-mode-toggle:checked) {
@@ -38,6 +41,8 @@ body {
   min-height: 100vh;
   color: var(--clr-text);
   background: var(--clr-body-bg);
+  font-family: var(--ff-primary);
+  font-optical-sizing: auto;
 }
 
 /* responsive images/videos */
