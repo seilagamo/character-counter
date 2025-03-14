@@ -2,22 +2,27 @@
     /* Typography */
     --ff-primary: "DM Sans", sans-serif;
     --clr-accent: hsl(274deg 85% 80%);
-
     --border-w: 1px;
     --btn-w: 1.5rem; /* change btn size, and everything else scales according to it. except border size */
     --btn-h: calc(var(--btn-w) / 2); /* increase btn height by decreasing the number */
     --gap-toggle: calc(var(--btn-h) / 10); /* increase gap by decreasing the number */
 }
 
-:root:not(:has(#dark-mode-toggle:checked)) {
+/* :root:not(:has(#dark-mode-toggle:checked)) { */
+[data-theme="light"] {
+    color-scheme: light;
+
     --clr-body-bg: hsl(259deg 100% 99%);
     --clr-card-bg: hsl(0deg 0% 100%);
-    --clr-header: hsl(0, 0%, 0%);
-    --clr-text: hsl(0, 1%, 42%);
+    --clr-header: hsl(0deg 0% 0%);
+    --clr-text: hsl(0deg 1% 42%);
     --clr-input-bg: hsl(240deg 27% 91%);
 }
 
-:root:has(#dark-mode-toggle:checked) {
+/* :root:has(#dark-mode-toggle:checked) { */
+[data-theme="dark"] {
+    color-scheme: dark;
+
     --clr-body-bg: hsl(209deg 50% 10%);
     --clr-card-bg: hsl(209deg 50% 5%);
     --clr-header: hsl(259deg 100% 99%);
@@ -53,6 +58,7 @@ body {
     font-family: var(--ff-primary);
     background: var(--clr-body-bg);
     font-optical-sizing: auto;
+
 }
 
 /* responsive images/videos */
@@ -110,6 +116,7 @@ h1 {
 .container {
     max-width: 80rem;
     padding: 1em;
+    margin-inline: auto;
 }
 
 .header {
@@ -169,18 +176,17 @@ h1 {
 }
 
 .dark-mode-toggle {
-    appearance: none;
     position: relative;
     box-sizing: content-box;
     width: var(--btn-w);
     height: var(--btn-h);
     padding: var(--gap-toggle);
+    color: var(--clr-text);
     border: var(--border-w) solid;
     border-radius: var(--btn-w);
-    color: var(--clr-text);
-    /* background: var(--btn-bg-inactive); */
     cursor: pointer;
     transition: background 0.3s;
+    appearance: none;
 }
 
 .dark-mode-toggle::before {
@@ -189,12 +195,12 @@ h1 {
     box-sizing: border-box;
     width: var(--btn-h);
     height: var(--btn-h);
+    color: var(--clr-text);
     background: currentcolor;
     border: var(--border-w) solid;
     border-radius: 50%;
     transition: transform 0.3s;
     content: '';
-    color: var(--clr-text);
 }
 
 [id^="dark-mode-toggle"]:checked.dark-mode-toggle::before {
@@ -216,9 +222,12 @@ h1 {
    Textarea
 -------------------------- */
 
+input {
+}
+
 .input {
-    background-color: var(--clr-input-bg);
     color: var(--clr-text);
+    background-color: var(--clr-input-bg);
     border-color: transparent;
 }
 
@@ -228,4 +237,12 @@ h1 {
     font-family: inherit;
     border-radius: 4px;
     resize: none;
+}
+
+.options {
+    justify-content: space-between;
+}
+
+.reading-time {
+    margin-inline-start: auto;
 }
