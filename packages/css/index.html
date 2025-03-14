@@ -13,18 +13,25 @@
     </head>
     <body>
         <div class="container">
-            <header class="flex">
+            <header class="header flex">
+                <div class="logo">
+                    <div class="my-logo-left"></div>
+                    <div class="my-logo-right">
+                        <div class="my-logo-inner"></div>
+                    </div>
+                </div>
                 <h1>Character Counter</h1>
                 <div class="theme-picker-container">
-                    <form class="theme-picker" action="">
-                        <label for="dark-mode-toggle" class="visually-hidden">Dark
-                            mode</label>
-                        <input type="checkbox" role="switch"
-                               id="dark-mode-toggle" checked/>
-                    </form>
+                  <input type="checkbox" id="dark-mode-toggle" class="visually-hidden" role="switch"/>
+                  <label class="dark-mode-toggle" for="dark-mode-toggle"></label>
                 </div>
             </header>
-
+            <h1 class="title">Analyze your text in real-time.</h1>
+            <form action="">
+                <label for="textarea" class="visually-hidden">Textarea</label>
+                <textarea id="textarea" class="textarea"
+                          placeholder="Remember, be nice!"></textarea>
+            </form>
         </div>
     </body>
 </html>

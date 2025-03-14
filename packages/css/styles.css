@@ -1,18 +1,22 @@
 :root {
-  --clr-body-bg: hsl(0deg 0% 90%);
-  --clr-card-bg: hsl(0deg 0% 100%);
-  --clr-text: hsl(0deg 0% 15%);
-  --clr-heading: hsl(0deg 0% 25%);
+    /* Typography */
+    --ff-primary: "DM Sans", sans-serif;
+    --clr-accent: hsl(274deg 85% 80%);
+    /*--gap: 0.5rem;*/
+}
 
-  /* Typography */
-  --ff-primary: "DM Sans", sans-serif;
+:root:not(:has(#dark-mode-toggle:checked)) {
+    --clr-body-bg: hsl(0deg 0% 90%);
+    --clr-card-bg: hsl(0deg 0% 100%);
+    --clr-text: hsl(0deg 0% 15%);
+    --clr-heading: hsl(0deg 0% 25%);
 }
 
 :root:has(#dark-mode-toggle:checked) {
-  --clr-body-bg: hsl(209deg 50% 10%);
-  --clr-card-bg: hsl(209deg 50% 5%);
-  --clr-text: hsl(209deg 50% 90%);
-  --clr-heading: hsl(209deg 50% 80%);
+    --clr-body-bg: hsl(209deg 50% 10%);
+    --clr-card-bg: hsl(209deg 50% 5%);
+    --clr-text: hsl(259deg 100% 99%);
+    --clr-heading: hsl(209deg 50% 80%);
 }
 
 
@@ -20,29 +24,29 @@
 *,
 *::before,
 *::after {
-  box-sizing: border-box;
+    box-sizing: border-box;
 }
 
 /* remove default spacing
    force styling of type through styling, rather than elements */
 * {
-  margin: 0;
-  padding: 0;
-  font: inherit;
+    margin: 0;
+    padding: 0;
+    font: inherit;
 }
 
 /* dark mode user-agent-styles */
 html {
-  color-scheme: dark light;
+    color-scheme: dark light;
 }
 
 /* min body height */
 body {
-  min-height: 100vh;
-  color: var(--clr-text);
-  background: var(--clr-body-bg);
-  font-family: var(--ff-primary);
-  font-optical-sizing: auto;
+    min-height: 100vh;
+    color: var(--clr-text);
+    font-family: var(--ff-primary);
+    background: var(--clr-body-bg);
+    font-optical-sizing: auto;
 }
 
 /* responsive images/videos */
@@ -50,8 +54,8 @@ img,
 picture,
 svg,
 video {
-  display: block;
-  max-width: 100%;
+    display: block;
+    max-width: 100%;
 }
 
 /* Improved heading in supported browsers */
@@ -61,15 +65,15 @@ h3,
 h4,
 h5,
 h6 {
-  text-wrap: balance;
+    text-wrap: balance;
 }
 
 /* improve readability with max-width on paragraphs and lists
    prevent orphans in supported browsers */
 p,
 li {
-  max-width: var(--p-max-width, 65ch);
-  text-wrap: pretty;
+    max-width: var(--p-max-width, 65ch);
+    text-wrap: pretty;
 }
 
 /* --------------------------
@@ -78,78 +82,153 @@ li {
 
 /* general */
 .flex {
-  display: flex;
-  gap: var(--gap, 1rem);
+    display: flex;
+    gap: var(--gap, 1rem);
 }
 
 .grid {
-  display: grid;
-  gap: var(--gap, 1rem);
+    display: grid;
+    gap: var(--gap, 1rem);
 }
 
 .flow > *:where(:not(:first-child)) {
-  margin-block-start: var(--flow-space, 1rem);
-}
-
-
-.container {
-  max-width: 80rem;
-  padding-inline: 2em;
-  margin-inline: auto;
-}
-
-
-.theme-picker-container,
-.theme-picker {
-  display: inline;
+    margin-block-start: var(--flow-space, 1rem);
 }
 
 .visually-hidden {
-  position: absolute;
-  width: 1px;
-  height: 1px;
-  overflow: hidden;
-  white-space: nowrap;
-  clip: rect(0 0 0 0);
-  clip-path: inset(50%);
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    overflow: hidden;
+    white-space: nowrap;
+    clip: rect(0 0 0 0);
+    clip-path: inset(50%);
+}
+
+.container {
+    max-width: 80rem;
+    padding: 1em;
+    /*margin-inline: auto;*/
+}
+
+.header {
+    justify-content: space-between;
+    align-items: center;
+}
+
+.logo {
+    height: 1.5em;
+    /*border: 1px solid red;*/
+}
+
+.my-logo-left {
+    /*border: 1px solid blue;*/
+    width: 0.75em;
+    height: 1.5em;
+    background: var(--clr-accent);
+}
+
+.my-logo-right {
+    width: 0.5em;
+    height: 1em;
+    background: var(--clr-accent);
+    border-bottom-right-radius: 1em;
+    border-top-right-radius: 1em;
+    transform: translate(150%, -125%);
+}
+
+.my-logo-inner {
+    width: 0.5em;
+    height: 1em;
+    background: var(--clr-body-bg);
+    border-bottom-left-radius: 1em;
+    border-top-left-radius: 1em;
+    transform: translateX(-100%);
+}
+
+.header > h1 {
+    width: 100%;
 }
 
 /* Theme toggle switch */
+.theme-picker-container {
+    line-height: 0.7em;
+}
 
-input[type="checkbox"][role="switch"] {
-  position: relative;
+:root {
+    --border-w: 1px;
+    --btn-thumb: #EDF2F4;
+    --btn-w: 1.5rem; /* change btn size, and everything else scales according to it. except border size */
+    --btn-h: calc(var(--btn-w) / 2); /* increase btn height by decreasing the number */
+    --gap-toggle: calc(var(--btn-h) / 10); /* increase gap by decreasing the number */
+}
+
+.dark-mode-toggle {
+  width: fit-content;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+}
+
+.theme-picker-container {
+  width: fit-content;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+}
+
+.dark-mode-toggle {
   box-sizing: content-box;
-  width: 2em;
-  height: 1em;
-  margin: auto;
-  color: inherit;
-  font-size: inherit;
-  vertical-align: text-bottom;
-  border: 1px solid;
-  border-radius: 1em;
-  appearance: none;
+  width: var(--btn-w);
+  height: var(--btn-h);
+  padding: var(--gap-toggle);
+  border: var(--border-w) solid;
+  border-radius: var(--btn-w);
+  /*background: var(--btn-bg-inactive);*/
+  cursor: pointer;
+  position: relative;
+  transition: background 0.3s;
 }
 
-input:where([type="checkbox"][role="switch"])::before {
-  position: absolute;
-  top: 50%;
-  left: 0;
+.dark-mode-toggle::before {
+  content: '';
   box-sizing: border-box;
-  width: 0.7em;
-  height: 0.7em;
-  margin: 0 0.15em;
-  background: currentcolor;
-  border: 1px solid;
+  position: absolute;
+  left: var(--gap-toggle);
+  width: var(--btn-h);
+  height: var(--btn-h);
+  border: var(--border-w) solid;
   border-radius: 50%;
-  transform: translate(0, -50%);
-  transition: 0.3s;
-  content: "";
+  background: currentcolor;
+  transition: transform 0.3s;
 }
 
-input:where([type="checkbox"][role="switch"]):checked::before {
-  left: 1em;
+[id^="dark-mode-toggle"]:checked + .dark-mode-toggle::before {
+  transform: translateX(calc(var(--btn-w) - var(--btn-h)));
 }
 
-input:where([type="checkbox"][role="switch"]):active {
-  opacity: 0.6;
+
+/* --------------------------
+   Title
+-------------------------- */
+
+.title {
+    font-size: 2em;
+    font-weight: bold;
+    margin: 1em 0;
+    text-align: center;
+}
+
+/* --------------------------
+   Textarea
+-------------------------- */
+
+.textarea {
+    font-size: 16px;
+    font-size: max(16px, 1em);
+    font-family: inherit;
+    padding: 0.25em 0.5em;
+    background-color: #fff;
+    border-radius: 4px;
+    width: 100%;
 }
