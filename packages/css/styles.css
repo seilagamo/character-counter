@@ -1,7 +1,9 @@
 :root {
     /* Typography */
     --ff-primary: "DM Sans", sans-serif;
-    --clr-accent: hsl(274deg 85% 80%);
+    --clr-primary-accent: hsl(274deg 85% 80%);
+    --clr-secondary-accent: hsl(37deg 100% 50%);
+    --clr-terciary-accent: hsl(14deg 100% 68%);
     --border-w: 1px;
     --btn-w: 1.5rem; /* change btn size, and everything else scales according to it. except border size */
     --btn-h: calc(var(--btn-w) / 2); /* increase btn height by decreasing the number */
@@ -114,6 +116,7 @@ h1 {
 }
 
 .container {
+    container-type: inline-size;
     max-width: 80rem;
     padding: 1em;
     margin-inline: auto;
@@ -131,13 +134,13 @@ h1 {
 .my-logo-left {
     width: 0.75em;
     height: 1.5em;
-    background: var(--clr-accent);
+    background: var(--clr-primary-accent);
 }
 
 .my-logo-right {
     width: 0.5em;
     height: 1em;
-    background: var(--clr-accent);
+    background: var(--clr-primary-accent);
     border-top-right-radius: 1em;
     border-bottom-right-radius: 1em;
     transform: translate(150%, -125%);
@@ -157,18 +160,8 @@ h1 {
 }
 
 /* Theme toggle switch */
-.theme-picker-container {
-    line-height: 0.7em;
-}
 
 .theme-picker-container {
-    display: flex;
-    align-items: center;
-    justify-content: flex-start;
-    width: fit-content;
-}
-
-.dark-mode-toggle {
     display: flex;
     align-items: center;
     justify-content: flex-start;
@@ -177,6 +170,8 @@ h1 {
 
 .dark-mode-toggle {
     position: relative;
+    align-items: center;
+    justify-content: flex-start;
     box-sizing: content-box;
     width: var(--btn-w);
     height: var(--btn-h);
@@ -221,10 +216,6 @@ h1 {
 /* --------------------------
    Textarea
 -------------------------- */
-
-input {
-}
-
 .input {
     color: var(--clr-text);
     background-color: var(--clr-input-bg);
@@ -239,10 +230,54 @@ input {
     resize: none;
 }
 
+/* --------------------------
+   Options
+-------------------------- */
+
 .options {
+    align-items: center;
     justify-content: space-between;
+    padding: 1em;
+}
+
+.check-character-limit:has([id^="set-character-limit"]:checked) + .limit {
+    display: none;
 }
 
 .reading-time {
     margin-inline-start: auto;
+}
+
+/* --------------------------
+   Card
+-------------------------- */
+
+.card-container {
+    flex-flow: column nowrap;
+    justify-content: space-between;
+}
+
+@container (min-width: 40em) {
+    .card-container {
+        flex-direction: row;
+    }
+}
+
+.card {
+    flex-grow: 1;
+    padding: 1em;
+    color: var(--clr-body-bg);
+    border-radius: 0.5em;
+}
+
+.total {
+    background: var(--clr-primary-accent);
+}
+
+.word-count {
+    background: var(--clr-secondary-accent);
+}
+
+.sentence-count {
+    background: var(--clr-terciary-accent);
 }
