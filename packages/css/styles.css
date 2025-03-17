@@ -237,15 +237,17 @@ h1 {
 .options {
     align-items: center;
     justify-content: space-between;
-    padding: 1em;
+    padding: 1em 0;
+    font-size:0.8em;
 }
 
-.check-character-limit:has([id^="set-character-limit"]:checked) + .limit {
+.check-character-limit:not(:has([id^="set-character-limit"]:checked)) + .limit {
     display: none;
 }
 
 .reading-time {
     margin-inline-start: auto;
+    text-align: right;
 }
 
 /* --------------------------
@@ -268,6 +270,12 @@ h1 {
     padding: 1em;
     color: var(--clr-body-bg);
     border-radius: 0.5em;
+}
+
+.count {
+    font-weight: bold;
+    font-size: 2em;
+    text-align: left;
 }
 
 .total {
