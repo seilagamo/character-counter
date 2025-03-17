@@ -60,7 +60,6 @@ body {
     font-family: var(--ff-primary);
     background: var(--clr-body-bg);
     font-optical-sizing: auto;
-
 }
 
 /* responsive images/videos */
@@ -238,7 +237,7 @@ h1 {
     align-items: center;
     justify-content: space-between;
     padding: 1em 0;
-    font-size:0.8em;
+    font-size: 0.8em;
 }
 
 .check-character-limit:not(:has([id^="set-character-limit"]:checked)) + .limit {
@@ -257,6 +256,7 @@ h1 {
 .card-container {
     flex-flow: column nowrap;
     justify-content: space-between;
+    padding: 1em 0;
 }
 
 @container (min-width: 40em) {
@@ -277,6 +277,9 @@ h1 {
     font-size: 2em;
     text-align: left;
 }
+.counter-name{
+    font-size: 1.25em;
+}
 
 .total {
     background: var(--clr-primary-accent);
@@ -289,3 +292,54 @@ h1 {
 .sentence-count {
     background: var(--clr-terciary-accent);
 }
+
+.density-container {
+    padding: 1em 0;
+}
+
+.density-container h2 {
+    font-weight: bold;
+    font-size: 1.25em;
+}
+
+.density-chart {
+    grid-template-columns: 0.5fr 20fr 2fr;
+    padding: 1em 0;
+}
+
+.density-chart > * {
+    align-self: center;
+}
+
+.density-percentage {
+    text-align: right;
+}
+
+/* --------------------------
+   Bar
+-------------------------- */
+
+.bar {
+    height: 0.8em;
+    background: var(--clr-input-bg);
+    border-radius: 0.5em;
+}
+
+.bar-inner {
+    height: 100%;
+    background: var(--clr-primary-accent);
+    border-radius: 0.5em;
+}
+
+/* --------------------------
+   See more
+-------------------------- */
+
+.see-more svg {
+    display: inline;
+    vertical-align: middle;
+    cursor: pointer;
+}
+
+
+
