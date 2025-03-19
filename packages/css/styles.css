@@ -2,7 +2,7 @@
     /* Typography */
     --ff-primary: "DM Sans", sans-serif;
     --clr-primary-accent: hsl(274deg 90% 80%);
-    --clr-primary-accent-light: hsl(273deg 92% 86%);
+    --clr-input-accent: hsl(274deg 90% 73%);
     --clr-secondary-accent: hsl(37deg 100% 50%);
     --clr-secondary-accent-light: hsl(37deg 100% 63%);
     --clr-tertiary-accent: hsl(15deg 99% 67%);
@@ -72,6 +72,7 @@ body {
     font-family: var(--ff-primary);
     background-image: var(--url-bg);
     font-optical-sizing: auto;
+    accent-color: var(--clr-input-accent);
 }
 
 /* responsive images/videos */
@@ -220,7 +221,9 @@ h1 {
 
 .textarea {
     width: 100%;
+    min-height: 7rem;
     padding: 0.25em 0.5em;
+    font-size: 0.8rem;
     font-family: inherit;
     border-radius: 4px;
     resize: none;
@@ -271,10 +274,10 @@ h1 {
 }
 
 .count {
+    padding: 0.5rem 0;
     font-weight: bold;
     font-size: 2em;
     text-align: left;
-    padding: 0.5rem 0;
 }
 
 .counter-name {
@@ -292,7 +295,6 @@ h1 {
 .word-count {
     background: var(--clr-secondary-accent);
     background-image: var(--url-bg-words);
-    background-repeat: no-repeat;
     background-position: right 0;
     background-size: contain;
 }
@@ -300,7 +302,6 @@ h1 {
 .sentence-count {
     background: var(--clr-tertiary-accent);
     background-image: var(--url-bg-sentence);
-    background-repeat: no-repeat;
     background-position: right 0;
     background-size: contain;
 }
