@@ -13,7 +13,7 @@
         <link rel="icon" type="image/x-icon" href="assets/favicon.ico"/>
     </head>
     <body>
-        <div class="container">
+        <div class="container flex">
             <header class="header flex">
                 <div class="logo">
                     <img src="assets/logo-light-theme.svg" alt="logo" class="logo-img"/>
@@ -25,11 +25,13 @@
                            class="dark-mode-toggle" role="switch"/>
                 </div>
             </header>
-            <h1 class="title">Analyze your text in real-time.</h1>
+            <div class="tittle-container">
+                <h1 class="title">Analyze your text in real-time.</h1>
+            </div>
             <form action="">
                 <label for="textarea" class="visually-hidden">Textarea</label>
                 <textarea id="textarea" class="input textarea"
-                          placeholder="Remember, be nice!"></textarea>
+                          placeholder="Start typing here... (or paste your text)"></textarea>
                 <div class="flex options">
                     <div>
                         <input id="exclude-spaces" type="checkbox"
@@ -105,6 +107,9 @@
                             stroke="none" d="M0 0h24v24H0z" fill="none"/><path
                             d="M6 9l6 6l6 -6"/></svg>
                 </span></p>
+            </div>
+            <div class="empty-text-notice">
+                <p>No characters found. Start typing to see letter density.</p>
             </div>
         </div>
     </body>

@@ -123,14 +123,11 @@ li {
 
 /* -------------------------- */
 
-h1 {
-    color: var(--clr-text);
-}
-
 .container {
-    container-type: inline-size;
-    max-width: 60rem;
+    flex-flow: column nowrap;
+    max-width: 50rem;
     padding: 1em;
+    container-type: inline-size;
     margin-inline: auto;
 }
 
@@ -150,10 +147,6 @@ h1 {
     height: 40px;
     padding-left: 251px; /* Equal to width of the image */
     background: var(--url-logo) no-repeat;
-}
-
-.header > h1 {
-    width: 100%;
 }
 
 /* Theme toggle switch */
@@ -203,10 +196,16 @@ h1 {
    Title
 -------------------------- */
 
+.tittle-container {
+    display: flex;
+    justify-content: center;
+}
+
 .title {
+    width: 50%;
     margin: 1em 0;
     font-weight: bold;
-    font-size: 2em;
+    font-size: 3em;
     text-align: center;
 }
 
@@ -222,7 +221,7 @@ h1 {
 .textarea {
     width: 100%;
     min-height: 7rem;
-    padding: 0.25em 0.5em;
+    padding: 1em;
     font-size: 0.8rem;
     font-family: inherit;
     border-radius: 4px;
@@ -238,6 +237,16 @@ h1 {
     justify-content: space-between;
     padding: 1em 0;
     font-size: 0.8em;
+
+    > div {
+        > label {
+            padding: 0 0.5em;
+        }
+
+        > .input {
+            vertical-align: middle;
+        }
+    }
 }
 
 .check-character-limit:not(:has([id^="set-character-limit"]:checked)) + .limit {
@@ -269,7 +278,12 @@ h1 {
     flex-basis: 0;
     flex-grow: 1;
     padding: 1rem;
-    color: var(--clr-body-bg);
+    color: var(--neutral-900);
+    background: var(--card-bg-color);
+    background-image: var(--url-card-bg);
+    background-repeat: no-repeat;
+    background-position: right 0;
+    background-size: contain;
     border-radius: 0.5em;
 }
 
@@ -278,6 +292,7 @@ h1 {
     font-weight: bold;
     font-size: 2em;
     text-align: left;
+
 }
 
 .counter-name {
@@ -285,25 +300,18 @@ h1 {
 }
 
 .total {
-    background: var(--clr-primary-accent);
-    background-image: var(--url-bg-characters);
-    background-repeat: no-repeat;
-    background-position: right 0;
-    background-size: contain;
+    --card-bg-color: var(--clr-primary-accent);
+    --url-card-bg: var(--url-bg-characters);
 }
 
 .word-count {
-    background: var(--clr-secondary-accent);
-    background-image: var(--url-bg-words);
-    background-position: right 0;
-    background-size: contain;
+    --card-bg-color: var(--clr-secondary-accent);
+    --url-card-bg: var(--url-bg-words);
 }
 
 .sentence-count {
-    background: var(--clr-tertiary-accent);
-    background-image: var(--url-bg-sentence);
-    background-position: right 0;
-    background-size: contain;
+    --card-bg-color: var(--clr-tertiary-accent);
+    --url-card-bg: var(--url-bg-sentence);
 }
 
 .density-container {
@@ -348,11 +356,16 @@ h1 {
    See more
 -------------------------- */
 
+.container:has(textarea:placeholder-shown) .see-more {
+    display: none;
+}
+
+.container:not(:has(textarea:placeholder-shown)) .empty-text-notice {
+    display: none;
+}
+
 .see-more svg {
     display: inline;
     vertical-align: middle;
     cursor: pointer;
 }
-
-
-
