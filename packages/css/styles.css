@@ -13,10 +13,6 @@
     --neutral-600: hsl(234deg 14% 29%);
     --neutral-500: hsl(240deg 26% 92%);
     --neutral-400: hsl(240deg 24% 96%);
-    --border-w: 1px;
-    --btn-w: 1.5rem; /* change btn size, and everything else scales according to it. except border size */
-    --btn-h: calc(var(--btn-w) / 2); /* increase btn height by decreasing the number */
-    --gap-toggle: calc(var(--btn-h) / 10); /* increase gap by decreasing the number */
     --url-bg-characters: url("assets/pattern-character-count.svg");
     --url-bg-words: url("assets/pattern-word-count.svg");
     --url-bg-sentence: url("assets/pattern-sentence-count.svg");
@@ -31,6 +27,7 @@
     --clr-input-bg: var(--neutral-400);
     --url-bg: url("assets/bg-light-theme.png");
     --url-logo: url("assets/logo-light-theme.svg");
+    --url-theme-icon: url("assets/icons/icon-moon.svg");
 }
 
 /* :root:has(#dark-mode-toggle:checked) { */
@@ -42,6 +39,7 @@
     --clr-input-bg: var(--neutral-800);
     --url-bg: url("assets/bg-dark-theme.png");
     --url-logo: url("assets/logo-dark-theme.svg");
+    --url-theme-icon: url("assets/icons/icon-sun.svg");
 }
 
 
@@ -161,32 +159,18 @@ li {
 .dark-mode-toggle {
     position: relative;
     align-items: center;
-    justify-content: flex-start;
-    box-sizing: content-box;
-    width: var(--btn-w);
-    height: var(--btn-h);
-    padding: var(--gap-toggle);
-    color: var(--clr-text);
-    border: var(--border-w) solid;
-    border-radius: var(--btn-w);
+    width: 30px;
+    height: 30px;
+    background-color: var(--clr-input-bg);
+    background-image: var(--url-theme-icon);
+    background-repeat: no-repeat;
+    background-position: center;
+    border-radius: 4px;
     cursor: pointer;
     transition: background 0.3s;
     appearance: none;
 }
 
-.dark-mode-toggle::before {
-    position: absolute;
-    left: var(--gap-toggle);
-    box-sizing: border-box;
-    width: var(--btn-h);
-    height: var(--btn-h);
-    color: var(--clr-text);
-    background: currentcolor;
-    border: var(--border-w) solid;
-    border-radius: 50%;
-    transition: transform 0.3s;
-    content: '';
-}
 
 [id^="dark-mode-toggle"]:checked.dark-mode-toggle::before {
     transform: translateX(calc(var(--btn-w) - var(--btn-h)));
@@ -233,29 +217,29 @@ li {
 -------------------------- */
 
 .options {
-    align-items: center;
+    flex-flow: column nowrap;
+    align-items: start;
     justify-content: space-between;
     padding: 1em 0;
     font-size: 0.8em;
 
-    > div {
-        > label {
-            padding: 0 0.5em;
-        }
+    --gap: 0.5rem;
 
-        > .input {
-            vertical-align: middle;
-        }
+    div {
+        flex-flow: row nowrap;
     }
+}
+
+
+.check-exclude-spaces,
+.check-character-limit {
+    --gap: 0.5rem;
+
+    align-items: center;
 }
 
 .check-character-limit:not(:has([id^="set-character-limit"]:checked)) + .limit {
     display: none;
-}
-
-.reading-time {
-    margin-inline-start: auto;
-    text-align: right;
 }
 
 /* --------------------------
@@ -271,6 +255,18 @@ li {
 @container (min-width: 40em) {
     .card-container {
         flex-direction: row;
+    }
+
+    .options {
+        flex-direction: row;
+        align-items: center;
+
+        --gap: 1rem;
+    }
+
+    .reading-time {
+        margin-inline-start: auto;
+        text-align: right;
     }
 }
 
@@ -314,6 +310,10 @@ li {
     --url-card-bg: var(--url-bg-sentence);
 }
 
+/* --------------------------
+   Density
+-------------------------- */
+
 .density-container {
     padding: 1em 0;
 }
@@ -330,6 +330,10 @@ li {
 
 .density-chart > * {
     align-self: center;
+}
+
+.container:has(textarea:placeholder-shown) .density-chart {
+    display: none;
 }
 
 .density-percentage {
@@ -360,12 +364,16 @@ li {
     display: none;
 }
 
-.container:not(:has(textarea:placeholder-shown)) .empty-text-notice {
-    display: none;
-}
-
 .see-more svg {
     display: inline;
     vertical-align: middle;
     cursor: pointer;
+}
+
+/* --------------------------
+   Empty text notice
+-------------------------- */
+
+.container:not(:has(textarea:placeholder-shown)) .empty-text-notice {
+    display: none;
 }

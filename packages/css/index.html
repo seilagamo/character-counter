@@ -16,7 +16,8 @@
         <div class="container flex">
             <header class="header flex">
                 <div class="logo">
-                    <img src="assets/logo-light-theme.svg" alt="logo" class="logo-img"/>
+                    <img src="assets/logo-light-theme.svg" alt="logo"
+                         class="logo-img"/>
                 </div>
                 <div class="theme-picker-container">
                     <label class="visually-hidden"
@@ -33,20 +34,23 @@
                 <textarea id="textarea" class="input textarea"
                           placeholder="Start typing here... (or paste your text)"></textarea>
                 <div class="flex options">
-                    <div>
+                    <div class="check-exclude-spaces flex">
                         <input id="exclude-spaces" type="checkbox"
                                class="input"/>
                         <label for="exclude-spaces">Exclude Spaces</label>
                     </div>
-                    <div class="check-character-limit">
-                        <input id="set-character-limit" type="checkbox"
-                               class="input"/>
-                        <label for="set-character-limit">Set Character
-                            Limit</label>
-                    </div>
-                    <div class="limit">
-                        <label for="limit" class="visually-hidden">Limit: </label>
-                        <input id="limit" type="number">
+                    <div class="flex">
+                        <div class="check-character-limit flex">
+                            <input id="set-character-limit" type="checkbox"
+                                   class="input"/>
+                            <label for="set-character-limit">Set Character
+                                Limit</label>
+                        </div>
+                        <div class="limit">
+                            <label for="limit"
+                                   class="visually-hidden">Limit: </label>
+                            <input id="limit" type="number">
+                        </div>
                     </div>
                     <p class="reading-time">Approx. reading time: 0 minute</p>
                 </div>
@@ -77,7 +81,7 @@
                     <div class="bar">
                         <div class="bar-inner" style="width: 11.65%"></div>
                     </div>
-                    <div class="density-percentage" >29 (11.65%)</div>
+                    <div class="density-percentage">29 (11.65%)</div>
                     <div class="letter">T</div>
                     <div class="bar">
                         <div class="bar-inner" style="width: 11.24%"></div>
@@ -87,7 +91,7 @@
                     <div class="bar">
                         <div class="bar-inner" style="width: 8.84%"></div>
                     </div>
-                    <div class="density-percentage" >22 (8.84%)</div>
+                    <div class="density-percentage">22 (8.84%)</div>
                     <div class="letter">N</div>
                     <div class="bar">
                         <div class="bar-inner" style="width: 8.43%"></div>
@@ -103,7 +107,7 @@
                          stroke="currentColor" stroke-width="2"
                          stroke-linecap="round"
                          stroke-linejoin="round"
-                         ><path
+                    ><path
                             stroke="none" d="M0 0h24v24H0z" fill="none"/><path
                             d="M6 9l6 6l6 -6"/></svg>
                 </span></p>
