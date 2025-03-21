@@ -244,7 +244,7 @@ li {
     align-items: center;
 }
 
-.check-character-limit:not(:has([id^="set-character-limit"]:checked)) + .limit {
+.check-character-limit:not(:has([id^="character-limit"]:checked)) + .limit {
     display: none;
 }
 
@@ -301,7 +301,7 @@ li {
     font-size: 1.25em;
 }
 
-.total {
+.character-count {
     --card-bg-color: var(--clr-primary-accent);
     --url-card-bg: var(--url-bg-characters);
 }
