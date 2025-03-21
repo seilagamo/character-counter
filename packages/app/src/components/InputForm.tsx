@@ -7,9 +7,9 @@ function InputForm () {
       <textarea id="textarea" className="input textarea"
                 placeholder="Start typing here... (or paste your text)"></textarea>
       <div className="flex options">
-        <Checkbox label="Exclude Spaces" id="exclude-spaces" checked/>
+        <Checkbox label="Exclude Spaces" id="exclude-spaces" checked={false}/>
         <div className="flex">
-          <Checkbox label="Set Character Limit" id="character-limit" checked/>
+          <Checkbox label="Set Character Limit" id="character-limit" checked={false}/>
           <div className="limit">
             <label htmlFor="limit"
                    className="visually-hidden">Limit: </label>

@@ -1,5 +1,5 @@
 import Logo from "./Logo.tsx";
-import ThemePicker from "./ThemePicker.tsx";
+import DarkMode from "./DarkMode.tsx";
 
 function Header () {
 
@@ -10,7 +10,7 @@ function Header () {
   return (
     <header className="header flex">
       <Logo />
-      <ThemePicker theme={getTheme()}/>
+      <DarkMode checked={getTheme() === 'dark'}/>
     </header>
   );
 }
