@@ -187,10 +187,10 @@ li {
 }
 
 .title {
-    width: 50%;
+    width: 100%;
     margin: 1em 0;
     font-weight: bold;
-    font-size: 3em;
+    font-size: 2em;
     text-align: center;
 }
 
@@ -259,6 +259,11 @@ li {
 }
 
 @container (min-width: 40em) {
+    .title {
+        width: 50%;
+        font-size: 3em;
+    }
+
     .card-container {
         flex-direction: row;
     }
