@@ -1,8 +1,7 @@
-import {createContext} from "react";
-
+import { createContext } from 'react';
 
 export interface CounterContextType {
-  letterDensity:  Map<string, number>;
+  letterDensity: Map<string, number>;
   characterCount: number;
   wordCount: number;
   sentenceCount: number;

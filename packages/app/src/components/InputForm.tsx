@@ -1,11 +1,10 @@
-import Checkbox from "./Checkbox.tsx";
-import {ChangeEventHandler, FocusEventHandler, use, useState} from "react";
-import CounterContext from "../../store/counter-context.tsx";
+import Checkbox from './Checkbox.tsx';
+import { ChangeEventHandler, FocusEventHandler, use, useState } from 'react';
+import CounterContext from '../../store/counter-context.tsx';
 
-function InputForm () {
-
+function InputForm() {
   const counterCtx = use(CounterContext);
-  const [text, setText] = useState("");
+  const [text, setText] = useState('');
   const [excludeSpaces, setExcludeSpaces] = useState(false);
   const [characterLimit, setCharacterLimit] = useState(false);
   const [limit, setLimit] = useState(0);
@@ -49,21 +48,41 @@ function InputForm () {
 
   return (
     <form action="">
-      <label htmlFor="textarea" className="visually-hidden">Textarea</label>
-      <textarea id="textarea" className="input textarea"
-                placeholder="Start typing here... (or paste your text)"
-                onChange={handleOnChange} value={text}></textarea>
+      <label htmlFor="textarea" className="visually-hidden">
+        Textarea
+      </label>
+      <textarea
+        id="textarea"
+        className="input textarea"
+        placeholder="Start typing here... (or paste your text)"
+        onChange={handleOnChange}
+        value={text}
+      ></textarea>
       <div className="flex options">
-        <Checkbox label="Exclude Spaces" id="exclude-spaces" checked={false}
-                  onChange={handleExcludeSpaces}/>
+        <Checkbox
+          label="Exclude Spaces"
+          id="exclude-spaces"
+          checked={false}
+          onChange={handleExcludeSpaces}
+        />
         <div className="flex">
-          <Checkbox label="Set Character Limit" id="character-limit"
-                    checked={false} onChange={handleCharacterLimit}/>
+          <Checkbox
+            label="Set Character Limit"
+            id="character-limit"
+            checked={false}
+            onChange={handleCharacterLimit}
+          />
           <div className="limit">
-            <label htmlFor="limit"
-                   className="visually-hidden">Limit: </label>
-            <input id="limit" type="input" value={limit}
-                   onChange={handleChangeLimit} onBlur={handleLimit}/>
+            <label htmlFor="limit" className="visually-hidden">
+              Limit:{' '}
+            </label>
+            <input
+              id="limit"
+              type="input"
+              value={limit}
+              onChange={handleChangeLimit}
+              onBlur={handleLimit}
+            />
           </div>
         </div>
         <p className="reading-time">Approx. reading time: 0 minute</p>

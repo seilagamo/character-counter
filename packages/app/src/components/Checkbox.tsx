@@ -1,4 +1,4 @@
-import {useState} from "react";
+import { useState } from 'react';
 
 interface CheckboxProps {
   label: string;
@@ -7,7 +7,7 @@ interface CheckboxProps {
   onChange: (checked: boolean) => void;
 }
 
-function Checkbox ({label, id, checked, onChange}: CheckboxProps) {
+function Checkbox({ label, id, checked, onChange }: CheckboxProps) {
   const [isChecked, setIsChecked] = useState(checked);
 
   const checkHandler = () => {
@@ -17,8 +17,13 @@ function Checkbox ({label, id, checked, onChange}: CheckboxProps) {
 
   return (
     <div className={`check-${id} flex`}>
-      <input id={id} type="checkbox" className="input" onChange={checkHandler}
-             checked={isChecked} />
+      <input
+        id={id}
+        type="checkbox"
+        className="input"
+        onChange={checkHandler}
+        checked={isChecked}
+      />
       <label htmlFor={id}>{label}</label>
     </div>
   );

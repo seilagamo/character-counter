@@ -5,6 +5,10 @@
   "license": "ISC",
   "author": "Seila Gamo",
   "type": "module",
+  "scripts": {
+    "prettier:write": "npx prettier . --write",
+    "prettier:check": "npx prettier . --check"
+  },
   "workspaces": [
     "packages/css",
     "packages/app"
