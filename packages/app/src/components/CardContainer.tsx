@@ -19,12 +19,12 @@ const cards = [
 ];
 
 function CardContainer () {
+
   return (
     <div className="card-container flex">
       {cards.map((card) => (
         <Card
           key={card.type}
-          count={card.count}
           description={card.name}
           type={card.type}
         />

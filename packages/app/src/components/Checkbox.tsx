@@ -4,13 +4,15 @@ interface CheckboxProps {
   label: string;
   id: string;
   checked: boolean;
+  onChange: (checked: boolean) => void;
 }
 
-function Checkbox ({label, id, checked}: CheckboxProps) {
+function Checkbox ({label, id, checked, onChange}: CheckboxProps) {
   const [isChecked, setIsChecked] = useState(checked);
 
   const checkHandler = () => {
     setIsChecked(!isChecked);
+    onChange(!isChecked);
   };
 
   return (

@@ -8,5 +8,8 @@
   "workspaces": [
     "packages/css",
     "packages/app"
-  ]
+  ],
+  "devDependencies": {
+    "prettier": "^3.5.3"
+  }
 }

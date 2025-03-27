@@ -1,46 +1,24 @@
 import Bar from "./Bar.tsx";
-
-const letterDensity = [
-  {
-    letter: 'E',
-    count: 40,
-    percentage: 16.06
-  },
-  {
-    letter: 'I',
-    count: 29,
-    percentage: 11.65
-  },
-  {
-    letter: 'T',
-    count: 28,
-    percentage: 11.24
-  },
-  {
-    letter: 'O',
-    count: 22,
-    percentage: 8.84
-  },
-  {
-    letter: 'N',
-    count: 21,
-    percentage: 8.43
-  }
-];
+import {use} from "react";
+import CounterContext from "../../store/counter-context.tsx";
 
 function LetterDensity () {
+  const counterCtx = use(CounterContext);
+
+  const letterDensity: Map<string, number> = counterCtx?.letterDensity ?? new Map();
+  const sortedLD = Array.from(letterDensity.entries()).sort((a, b) => b[1] - a[1]);
 
   return (
     <>
       <div className="density-container">
         <h2>Letter Density</h2>
         <div className="grid density-chart">
-          {letterDensity.map((item) => (
+          {sortedLD.map(([letter, count]) => (
             <Bar
-              key={item.letter}
-              letter={item.letter}
-              count={item.count}
-              percentage={item.percentage}
+              key={letter}
+              letter={letter}
+              count={count}
+              percentage={(letterDensity.get(letter) ?? 0) / (counterCtx?.characterCount ?? 1)}
             />
           ))}
         </div>
