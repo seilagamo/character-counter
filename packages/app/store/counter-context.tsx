@@ -13,7 +13,9 @@ const CounterContext = createContext<CounterContextType | undefined>({
   characterCount: 0,
   wordCount: 0,
   sentenceCount: 0,
-  updateCounter: () => {},
+  updateCounter: () => {
+    // do nothing
+  },
 });
 
 export default CounterContext;
