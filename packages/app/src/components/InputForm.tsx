@@ -28,7 +28,7 @@ function InputForm() {
     if (!state) {
       setLimit(0);
     }
-    counterCtx?.updateCounter(text, state);
+    counterCtx?.updateCounter(text, excludeSpaces);
     setCharacterLimit(state);
   };
 
@@ -37,6 +37,7 @@ function InputForm() {
       setLimit(Number(e.currentTarget.value));
       if (text.length > limit) {
         const t = text.slice(0, limit);
+        counterCtx?.updateCounter(t, excludeSpaces);
         setText(t);
       }
     }
