@@ -1,9 +1,10 @@
 import Bar from './Bar.tsx';
-import { use } from 'react';
+import { use, useState } from 'react';
 import CounterContext from '../store/counter-context.ts';
 
 function LetterDensity() {
   const counterCtx = use(CounterContext);
+  const [showAll, setShowAll] = useState(false);
 
   const letterDensity: Map<string, number> =
     counterCtx?.letterDensity ?? new Map<string, number>();
@@ -11,12 +12,21 @@ function LetterDensity() {
     (a, b) => b[1] - a[1]
   );
 
+  let finalSortedLD: [string, number][] = sortedLD;
+  if (!showAll) {
+    finalSortedLD = sortedLD.slice(0, 5);
+  }
+
+  const handleShowAll = () => {
+    setShowAll(!showAll);
+  };
+
   return (
     <>
       <div className="density-container">
         <h2>Letter Density</h2>
         <div className="grid density-chart">
-          {sortedLD.map(([letter, count]) => (
+          {finalSortedLD.map(([letter, count]) => (
             <Bar
               key={letter}
               letter={letter}
@@ -31,8 +41,8 @@ function LetterDensity() {
       </div>
       <div className="see-more">
         <p>
-          See more{' '}
-          <span>
+          See more
+          <span onClick={handleShowAll}>
             <svg
               xmlns="http://www.w3.org/2000/svg"
               width="18"
