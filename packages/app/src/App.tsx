@@ -58,10 +58,9 @@ function normalizeText(text: string): string {
     ç: 'c',
     Ç: 'C',
   };
-  return text.replace(
-    /[\u00C0-\u00FF]/g,
-    (match) => accentsMap[match] || match
-  );
+  return text
+    .toLowerCase()
+    .replace(/[\u00C0-\u00FF]/g, (match) => accentsMap[match] || match);
 }
 
 function App() {
