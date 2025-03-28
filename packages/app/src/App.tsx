@@ -2,9 +2,7 @@ import Header from './components/Header.tsx';
 import InputForm from './components/InputForm.tsx';
 import CardContainer from './components/CardContainer.tsx';
 import LetterDensity from './components/LetterDensity.tsx';
-import CounterContext, {
-  CounterContextType,
-} from '../store/counter-context.tsx';
+import CounterContext, { CounterContextType } from './store/counter-context.ts';
 import { useState } from 'react';
 
 function App() {
@@ -47,22 +45,24 @@ function App() {
 
     // https://www.totaltypescript.com/how-to-type-array-reduce
     const count = (s: string) => {
-      return [...s].reduce(
-        (obj: Map<string, number>, char: string): Map<string, number> => {
-          if (excludeSpaces) {
-            if (!char.match(/[a-zA-Z0-9]/g)) {
-              return obj;
+      return s
+        .split('')
+        .reduce(
+          (obj: Map<string, number>, char: string): Map<string, number> => {
+            if (excludeSpaces) {
+              if (!char.match(/[a-zA-Z0-9]/g)) {
+                return obj;
+              }
+            } else {
+              if (!char.match(/[a-zA-Z0-9\s]/g)) {
+                return obj;
+              }
             }
-          } else {
-            if (!char.match(/[a-zA-Z0-9\s]/g)) {
-              return obj;
-            }
-          }
-          obj.set(char, (obj.get(char) || 0) + 1);
-          return obj;
-        },
-        new Map<string, number>()
-      );
+            obj.set(char, (obj.get(char) ?? 0) + 1);
+            return obj;
+          },
+          new Map<string, number>()
+        );
     };
 
     setLetterDensity(count(text));

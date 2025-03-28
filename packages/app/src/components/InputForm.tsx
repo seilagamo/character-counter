@@ -1,6 +1,6 @@
 import Checkbox from './Checkbox.tsx';
 import { ChangeEventHandler, FocusEventHandler, use, useState } from 'react';
-import CounterContext from '../../store/counter-context.tsx';
+import CounterContext from '../store/counter-context.ts';
 
 function InputForm() {
   const counterCtx = use(CounterContext);

@@ -1,12 +1,12 @@
 import Bar from './Bar.tsx';
 import { use } from 'react';
-import CounterContext from '../../store/counter-context.tsx';
+import CounterContext from '../store/counter-context.ts';
 
 function LetterDensity() {
   const counterCtx = use(CounterContext);
 
   const letterDensity: Map<string, number> =
-    counterCtx?.letterDensity ?? new Map();
+    counterCtx?.letterDensity ?? new Map<string, number>();
   const sortedLD = Array.from(letterDensity.entries()).sort(
     (a, b) => b[1] - a[1]
   );

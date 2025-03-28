@@ -3,7 +3,7 @@ import DarkMode from './DarkMode.tsx';
 
 function Header() {
   const getTheme = (): string => {
-    return document.documentElement.getAttribute('data-theme') || 'light';
+    return document.documentElement.getAttribute('data-theme') ?? 'light';
   };
 
   return (
