@@ -16,6 +16,7 @@
     --url-bg-characters: url('assets/pattern-character-count.svg');
     --url-bg-words: url('assets/pattern-word-count.svg');
     --url-bg-sentence: url('assets/pattern-sentence-count.svg');
+    --count-font-size: 2rem;
 }
 
 /* :root:not(:has(#dark-mode-toggle:checked)) { */
@@ -255,10 +256,53 @@ li {
     padding: 1em 0;
 }
 
+.card {
+    flex-basis: 0;
+    flex-grow: 1;
+    padding: 1rem;
+    color: var(--neutral-900);
+    background: var(--card-bg-color);
+    background-image: var(--url-card-bg);
+    background-repeat: no-repeat;
+    background-position: right 0;
+    background-size: contain;
+    border-radius: 0.5em;
+}
+
+.count {
+    padding: 0.5rem 0;
+    font-weight: bold;
+    font-size: var(--count-font-size);
+    text-align: left;
+}
+
+.counter-name {
+    font-size: 1rem;
+}
+
+.character-count {
+    --card-bg-color: var(--clr-primary-accent);
+    --url-card-bg: var(--url-bg-characters);
+}
+
+.word-count {
+    --card-bg-color: var(--clr-secondary-accent);
+    --url-card-bg: var(--url-bg-words);
+}
+
+.sentence-count {
+    --card-bg-color: var(--clr-tertiary-accent);
+    --url-card-bg: var(--url-bg-sentence);
+}
+
 @container (min-width: 40em) {
     .title {
         width: 50%;
-        font-size: 3em;
+        font-size: 3rem;
+    }
+
+    .count {
+        --count-font-size: 3rem;
     }
 
     .card-container {
@@ -278,45 +322,6 @@ li {
     }
 }
 
-.card {
-    flex-basis: 0;
-    flex-grow: 1;
-    padding: 1rem;
-    color: var(--neutral-900);
-    background: var(--card-bg-color);
-    background-image: var(--url-card-bg);
-    background-repeat: no-repeat;
-    background-position: right 0;
-    background-size: contain;
-    border-radius: 0.5em;
-}
-
-.count {
-    padding: 0.5rem 0;
-    font-weight: bold;
-    font-size: 2em;
-    text-align: left;
-}
-
-.counter-name {
-    font-size: 1.25em;
-}
-
-.character-count {
-    --card-bg-color: var(--clr-primary-accent);
-    --url-card-bg: var(--url-bg-characters);
-}
-
-.word-count {
-    --card-bg-color: var(--clr-secondary-accent);
-    --url-card-bg: var(--url-bg-words);
-}
-
-.sentence-count {
-    --card-bg-color: var(--clr-tertiary-accent);
-    --url-card-bg: var(--url-bg-sentence);
-}
-
 /* --------------------------
    Density
 -------------------------- */
@@ -331,7 +336,7 @@ li {
 }
 
 .density-chart {
-    grid-template-columns: 0.5fr 20fr 3fr;
+    grid-template-columns: 0.5fr 20fr 4fr;
     padding: 1em 0;
 }
 
