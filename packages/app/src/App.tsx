@@ -5,6 +5,65 @@ import LetterDensity from './components/LetterDensity.tsx';
 import CounterContext, { CounterContextType } from './store/counter-context.ts';
 import { useState } from 'react';
 
+function normalizeText(text: string): string {
+  const accentsMap: Record<string, string> = {
+    á: 'a',
+    é: 'e',
+    í: 'i',
+    ó: 'o',
+    ú: 'u',
+    Á: 'A',
+    É: 'E',
+    Í: 'I',
+    Ó: 'O',
+    Ú: 'U',
+    à: 'a',
+    è: 'e',
+    ì: 'i',
+    ò: 'o',
+    ù: 'u',
+    À: 'A',
+    È: 'E',
+    Ì: 'I',
+    Ò: 'O',
+    Ù: 'U',
+    ä: 'a',
+    ë: 'e',
+    ï: 'i',
+    ö: 'o',
+    ü: 'u',
+    Ä: 'A',
+    Ë: 'E',
+    Ï: 'I',
+    Ö: 'O',
+    Ü: 'U',
+    â: 'a',
+    ê: 'e',
+    î: 'i',
+    ô: 'o',
+    û: 'u',
+    Â: 'A',
+    Ê: 'E',
+    Î: 'I',
+    Ô: 'O',
+    Û: 'U',
+    ã: 'a',
+    õ: 'o',
+    ñ: 'n',
+    Ã: 'A',
+    Õ: 'O',
+    Ñ: 'N',
+    å: 'a',
+    Å: 'A',
+    ç: 'c',
+    Ç: 'C',
+  };
+  return text.replace(
+    /[\u00C0-\u00FF]/g,
+    (match) => accentsMap[match] || match
+  );
+}
+
 function App() {
   let selectedTheme = localStorage.getItem('theme');
   if (!selectedTheme) {
@@ -26,17 +85,18 @@ function App() {
   const [readingTime, setReadingTime] = useState(0);
 
   function updateCounter(text: string, excludeSpaces: boolean) {
+    const normalizedText = normalizeText(text);
     let characters;
     if (excludeSpaces) {
-      characters = text.match(/[a-zA-Z0-9]/g);
+      characters = normalizedText.match(/[a-zA-Z0-9]/g);
     } else {
-      characters = text.match(/[a-zA-Z0-9\s]/g);
+      characters = normalizedText.match(/[a-zA-Z0-9\s]/g);
     }
     const characterCount = characters ? characters.length : 0;
-    const wordCount = text
+    const wordCount = normalizedText
       .split(/\s+/)
       .filter((word) => word.length > 0).length;
-    const sentenceCount = text
+    const sentenceCount = normalizedText
       .split(/[.!?]/)
       .filter((sentence) => sentence.length > 0).length;
 
@@ -72,7 +132,7 @@ function App() {
         );
     };
 
-    setLetterDensity(count(text));
+    setLetterDensity(count(normalizedText));
   }
 
   const counterCtxValue: CounterContextType = {
