@@ -85,7 +85,9 @@ function InputForm() {
             />
           </div>
         </div>
-        <p className="reading-time">Approx. reading time: 0 minute</p>
+        <p className="reading-time">
+          Approx. reading time: {counterCtx?.readingTime} minute
+        </p>
       </div>
     </form>
   );

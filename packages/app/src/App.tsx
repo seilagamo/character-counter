@@ -23,6 +23,7 @@ function App() {
   const [characterCount, setCharacterCount] = useState(0);
   const [wordCount, setWordCount] = useState(0);
   const [sentenceCount, setSentenceCount] = useState(0);
+  const [readingTime, setReadingTime] = useState(0);
 
   function updateCounter(text: string, excludeSpaces: boolean) {
     let characters;
@@ -42,6 +43,12 @@ function App() {
     setCharacterCount(characterCount);
     setWordCount(wordCount);
     setSentenceCount(sentenceCount);
+
+    // Reading time is calculated as 238 words per minute.
+    // This is the average reading speed of an adult.
+    // https://www.verywellmind.com/average-reading-speed-2795081
+    const rt = Math.ceil(wordCount / 238);
+    setReadingTime(rt);
 
     // https://www.totaltypescript.com/how-to-type-array-reduce
     const count = (s: string) => {
@@ -73,6 +80,7 @@ function App() {
     characterCount: characterCount,
     wordCount: wordCount,
     sentenceCount: sentenceCount,
+    readingTime: readingTime,
     updateCounter: updateCounter,
   };
 

@@ -5,6 +5,7 @@ export interface CounterContextType {
   characterCount: number;
   wordCount: number;
   sentenceCount: number;
+  readingTime: number;
   updateCounter: (text: string, excludeSpaces: boolean) => void;
 }
 
@@ -13,6 +14,7 @@ const CounterContext = createContext<CounterContextType | undefined>({
   characterCount: 0,
   wordCount: 0,
   sentenceCount: 0,
+  readingTime: 0,
   updateCounter: () => {
     // do nothing
   },
