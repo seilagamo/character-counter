@@ -4,6 +4,7 @@ import CardContainer from './components/CardContainer.tsx';
 import LetterDensity from './components/LetterDensity.tsx';
 import CounterContext, { CounterContextType } from './store/counter-context.ts';
 import { useState } from 'react';
+import { Analytics } from '@vercel/analytics/react';
 
 function normalizeText(text: string): string {
   const accentsMap: Record<string, string> = {
@@ -152,6 +153,7 @@ function App() {
         <CardContainer />
         <LetterDensity />
       </CounterContext>
+      <Analytics />
     </>
   );
 }
